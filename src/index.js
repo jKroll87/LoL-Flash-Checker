@@ -1,11 +1,11 @@
-const { app, BrowserWindow, screen } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 
 let win;
 
 function createWindow() {
-    const width = 800;
-    const height = 600;
+    const width = 300;
+    const height = 300;
     const margin = 30;
 
     win = new BrowserWindow({
@@ -25,6 +25,24 @@ function createWindow() {
     win.setIgnoreMouseEvents(true);
 
     win.loadFile(path.join(__dirname, 'index.html'));
+
+    win.setMenu(null);
+
+    globalShortcut.register('CommandOrControl+Z', () => {
+        console.log("Top");
+    });
+    globalShortcut.register('CommandOrControl+X', () => {
+        console.log("JG");
+    });
+    globalShortcut.register('CommandOrControl+C', () => {
+        console.log("MID");
+    });
+    globalShortcut.register('CommandOrControl+V', () => {
+        console.log("AD");
+    });
+    globalShortcut.register('CommandOrControl+B', () => {
+        console.log("SUP");
+    });
 
     win.on('close', () => { win = null });
 }

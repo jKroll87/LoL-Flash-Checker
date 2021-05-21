@@ -13,5 +13,3 @@ function startTimer(time) {
         current--;
     }, 1000);
 }
-
-startTimer(flashCooldown);
